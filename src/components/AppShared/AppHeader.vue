@@ -1,3 +1,14 @@
+<script>
+export default {
+  name: "AppHeader",
+  data: () => ({
+    menuOpened: false,
+  }),
+};
+</script>
+
+
+
 <template>
   <nav
     class="navbar navbar-dark navbar-expand-lg sticky-top"
@@ -19,7 +30,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
+            <router-link active-class="active" :to="{ name: 'HomeView' }">
+            </router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Kategoriler</a>
@@ -35,13 +47,16 @@
           />
         </div>
 
-        <a href="login.html" class="btn btn-outline-primary me-0 mb-2"
-          >Giriş Yap</a
-        >
+        <router-link
+          :to="{ name: 'LoginView' }"
+          class="btn btn-outline-primary me-0 mb-2"
+          >Giriş Yap
+        </router-link>
 
         <ul class="navbar-nav me-0 mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a
+              @click="menuOpened = !menuOpened"
               class="nav-link dropdown-toggle"
               id="navbarDropdown"
               role="button"
@@ -49,16 +64,34 @@
               aria-expanded="false"
               >Depde Kandemir</a
             >
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul
+              :class="{ show: menuOpened }"
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+            >
               <li>
-                <a class="dropdown-item" href="my-questions.html">Sorularım</a>
-                <a class="dropdown-item" href="favorites.html">Favorilerim</a>
+                <router-link
+                  class="dropdown-item"
+                  :to="{ name: 'MyQuestionsView' }"
+                  >Sorularım
+                </router-link>
+              </li>
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  :to="{ name: 'MyFavoritesView' }"
+                  >Favorilerim
+                </router-link>
               </li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
               <li>
-                <a class="dropdown-item" href="my-account.html">Hesabım</a>
+                <router-link
+                  class="dropdown-item"
+                  :to="{ name: 'MyAccountView' }"
+                  >Hesabım
+                </router-link>
               </li>
               <li>
                 <a class="dropdown-item" href="#">Çıkış Yap</a>

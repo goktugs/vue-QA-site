@@ -22,11 +22,11 @@ const routes = [
   },
   {
     path: '/favorites',
-    name: 'FavoritesView',
+    name: 'MyFavoritesView',
     meta: { authRequired: true },
     // component: () => import('@/views/User/Authenticated/FavoritesView'),
     components: {
-      default: () => import('@/views/User/Authenticated/FavoritesView'),
+      default: () => import('@/views/User/Authenticated/MyFavoritesView'),
       AppHeader,
     },
   },

@@ -1,0 +1,49 @@
+{
+  "users": [],
+  "categories": [
+    {
+      "title": "Vue.js",
+      "id": 1
+    },
+    {
+      "title": "JavaScript",
+      "id": 2
+    },
+    {
+      "title": "PHP",
+      "id": 3
+    },
+    {
+      "title": "Python",
+      "id": 4
+    },
+    {
+      "title": "React",
+      "id": 5
+    },
+    {
+      "title": "Golang",
+      "id": 6
+    },
+    {
+      "title": "DevOPS",
+      "id": 7
+    },
+    {
+      "title": "AWS",
+      "id": 8
+    },
+    {
+      "title": "Vue.js",
+      "id": 9
+    },
+    {
+      "title": "Angular",
+      "id": 10
+    }
+  ],
+  "questions": [],
+  "comments": [],
+  "favorites": [],
+  "likes": []
+}
