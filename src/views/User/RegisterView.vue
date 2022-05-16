@@ -4,13 +4,32 @@ export default {
   data: () => ({
     categoryList: [],
     // Userın etkileşime girdiği data
-    userData:
+    userData: {
+      full_name: null,
+      email: null,
+      password: null,
+      categoryId: null,
+    },
   }),
   methods: {
     fetchCategories() {
       this.$appAxios.get("/categories").then(({ data: categoryList }) => {
         console.log(categoryList);
         this.categoryList = categoryList || [];
+      });
+    },
+    onSubmit() {
+      // userdan gelen datayı parçalamak gerekli. 2 yol var 1) spread operator ile parçala. uzun iş 2) mixin kullan
+
+      // const userData = {
+      //   ...this.userData,
+      // };
+
+      // mixin
+      const userData = this.copy(this.userData);
+      this.$appAxios.post("/users", userData).then((user_save_response) => {
+        console.log(user_save_response);
+        this.$router.push("/HomeView");
       });
     },
   },
@@ -35,6 +54,7 @@ export default {
                 type="text"
                 class="form-control"
                 placeholder="İsim Giriniz"
+                v-model="userData.full_name"
               />
             </div>
             <div class="mb-3">
@@ -43,23 +63,35 @@ export default {
                 type="email"
                 class="form-control"
                 placeholder="info@gmail.com"
+                v-model="userData.email"
               />
             </div>
             <div class="mb-3">
               <label class="form-label">Şifre</label>
-              <input type="password" class="form-control" />
+              <input
+                type="password"
+                class="form-control"
+                v-model="userData.password"
+              />
             </div>
             <div class="mb-3">
               <label class="form-label">İlgi Duyduğunuz Kategori</label>
-              <select class="form-select">
+              <select class="form-select" v-model="userData.categoryId">
                 <option selected>Lütfen bir kategori seçiniz</option>
-                <option v-for="category in categoryList" :key="category.id">
+                <option
+                  v-for="category in categoryList"
+                  :key="category.id"
+                  :value="category.id"
+                >
                   {{ category.title }}
                 </option>
               </select>
             </div>
+
             <div class="mb-3 d-flex justify-content-end align-items-center">
-              <button class="btn btn-sm btn-primary">Kayıt Ol</button>
+              <button @click="onSubmit" class="btn btn-sm btn-primary">
+                Kayıt Ol
+              </button>
             </div>
           </div>
           <div class="card-footer text-center">

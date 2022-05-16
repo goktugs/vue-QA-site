@@ -1,5 +1,18 @@
 {
-  "users": [],
+  "users": [
+    {
+      "full_name": "12321",
+      "email": "2131@wqeqw.com",
+      "password": "2412",
+      "categoryId": 1,
+      "id": 1
+    },
+    {
+      "email": "null213131231@ad.com",
+      "password": "null2131312",
+      "id": 2
+    }
+  ],
   "categories": [
     {
       "title": "Vue.js",
