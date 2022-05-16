@@ -11,6 +11,7 @@
               justify-content-between
               align-items-center
             "
+            @click="$router.push({ name: 'NewQuestionView' })"
           >
             <span>Soru Sor</span>
             <i class="fa fa-edit"></i>
@@ -80,7 +81,14 @@
               <span class="custom-seperator"> | </span>
               <small class="custom-text-light">1 ay önce cevaplandı</small>
             </div>
-            <button class="btn-sm btn btn-primary">Soruyu görüntüle</button>
+            <button
+              @click="
+                $router.push({ name: 'QuestionDetailView', params: { id: 1 } })
+              "
+              class="btn-sm btn btn-primary"
+            >
+              Soruyu görüntüle
+            </button>
           </div>
         </div>
       </div>

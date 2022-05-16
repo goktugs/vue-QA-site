@@ -37,9 +37,11 @@
             </div>
           </div>
           <div class="card-footer text-center">
-            <a href="login.html" class="p-0 m-0 btn btn-link text-primary"
-              >Zaten üyeyim</a
-            >
+            <router-link
+              :to="{ name: 'LoginView' }"
+              class="p-0 m-0 btn btn-link text-primary"
+              >Zaten Üyeyim
+            </router-link>
           </div>
         </div>
       </div>

@@ -19,13 +19,20 @@
                 <input type="password" class="form-control" />
               </div>
               <div class="mb-3 d-flex justify-content-end align-items-center">
-                <button class="btn btn-sm btn-primary">Giriş Yap</button>
+                <button
+                  @click="$router.push({ name: 'HomeView' })"
+                  class="btn btn-sm btn-primary"
+                >
+                  Giriş Yap
+                </button>
               </div>
             </div>
             <div class="card-footer text-center">
-              <a href="register.html" class="p-0 m-0 btn btn-link text-primary"
-                >Üye değilim</a
-              >
+              <router-link
+                :to="{ name: 'RegisterView' }"
+                class="p-0 m-0 btn btn-link text-primary"
+                >Üye Değilim
+              </router-link>
             </div>
           </div>
         </div>
