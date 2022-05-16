@@ -1,3 +1,27 @@
+<script>
+export default {
+  name: "RegisterView",
+  data: () => ({
+    categoryList: [],
+    // Userın etkileşime girdiği data
+    userData:
+  }),
+  methods: {
+    fetchCategories() {
+      this.$appAxios.get("/categories").then(({ data: categoryList }) => {
+        console.log(categoryList);
+        this.categoryList = categoryList || [];
+      });
+    },
+  },
+
+  mounted() {
+    this.fetchCategories();
+  },
+};
+</script>
+
+
 <template>
   <div class="container loginPage">
     <div class="row">
@@ -10,7 +34,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Depde Kandemir"
+                placeholder="İsim Giriniz"
               />
             </div>
             <div class="mb-3">
@@ -18,7 +42,7 @@
               <input
                 type="email"
                 class="form-control"
-                placeholder="info@kablosuzkedi.com"
+                placeholder="info@gmail.com"
               />
             </div>
             <div class="mb-3">
@@ -29,7 +53,9 @@
               <label class="form-label">İlgi Duyduğunuz Kategori</label>
               <select class="form-select">
                 <option selected>Lütfen bir kategori seçiniz</option>
-                <option>Kategori Adı</option>
+                <option v-for="category in categoryList" :key="category.id">
+                  {{ category.title }}
+                </option>
               </select>
             </div>
             <div class="mb-3 d-flex justify-content-end align-items-center">
