@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import AppHeader from '@/components/AppShared/AppHeader';
+import store from '@/store';
 
 const routes = [
   {
@@ -76,6 +77,22 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, _, next) => {
+  const isAuthenticated = store.getters['users/isAuthenticated'];
+  const authRequired = to.meta?.authRequired;
+
+  // Gidilmek istenen sayfa auth ve giriş ise devam
+  if (authRequired) {
+    if (isAuthenticated) return next();
+    return next({ name: 'LoginView' });
+  } else if (isAuthenticated) {
+    // Hali hazırda authenticated ise
+    if (['LoginView', 'RegisterView'].includes(to.name)) {
+      next(false);
+    }
+  } else if (!authRequired) next(); // Gidilmek istenen sayfa auth gerekmiyorsa ozmn başka birşeye bakma devam et
 });
 
 export default router;
