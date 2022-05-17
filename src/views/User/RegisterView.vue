@@ -19,12 +19,10 @@ export default {
       //   ...this.userData,
       // };
 
-      // mixin
       const userData = this.copy(this.userData);
-      this.$appAxios.post("/users", userData).then((user_save_response) => {
-        console.log(user_save_response);
-        this.$router.push("/HomeView");
-      });
+      this.$store.dispatch("users/register", userData);
+
+      // mixin usage store tarafında
     },
   },
   computed: {

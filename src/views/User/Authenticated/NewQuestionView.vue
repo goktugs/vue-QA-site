@@ -1,5 +1,5 @@
 <script>
-import {mapGetters} from "vuex"
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
     userData: {
@@ -8,6 +8,12 @@ export default {
       categoryId: null,
     },
   }),
+  methods: {
+    onSubmit() {
+      const userData = this.copy(this.userData);
+      console.log(userData);
+    },
+  },
   computed: {
     ...mapGetters({
       categoryList: "categories/categoryList",
@@ -69,7 +75,9 @@ export default {
               align-items-center
             "
           >
-            <button class="btn btn-sm btn-primary">Kaydet</button>
+            <button @click="onSubmit" class="btn btn-sm btn-primary">
+              Kaydet
+            </button>
           </div>
         </div>
       </div>

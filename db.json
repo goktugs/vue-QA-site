@@ -11,6 +11,13 @@
       "email": "null213131231@ad.com",
       "password": "null2131312",
       "id": 2
+    },
+    {
+      "full_name": "goktugsevg",
+      "email": "goktug@vmailfda.com",
+      "password": "asdasda",
+      "categoryId": 6,
+      "id": 3
     }
   ],
   "categories": [

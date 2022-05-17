@@ -10,17 +10,7 @@ export default {
   methods: {
     onSubmit() {
       const userData = this.copy(this.userData);
-      this.$appAxios
-        .get(
-          `/users?email=${userData.email}&password=${userData.password}`,
-          userData
-        )
-        .then(({ status, data: userList }) => {
-          console.log(status, userList);
-          if (status === 200 && userList?.length === 1) {
-            this.$router.push({ name: "HomeView" });
-          }
-        });
+      this.$store.dispatch("users/login", userData);
     },
   },
 };
