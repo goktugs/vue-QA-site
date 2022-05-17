@@ -1,3 +1,23 @@
+<script>
+import {mapGetters} from "vuex"
+export default {
+  data: () => ({
+    userData: {
+      details: null,
+      title: null,
+      categoryId: null,
+    },
+  }),
+  computed: {
+    ...mapGetters({
+      categoryList: "categories/categoryList",
+    }),
+  },
+};
+</script>
+
+
+
 <template>
   <div class="container">
     <div class="row mt-3">
@@ -10,6 +30,7 @@
                 >Kısa bir başlık</label
               >
               <input
+                v-model="userData.title"
                 type="text"
                 class="form-control"
                 id="question-title"
@@ -18,12 +39,23 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Detaylar</label>
-              Editör Alanı
+              <quill-editor v-model:value="userData.content" />
             </div>
             <div class="mb-3">
               <label for="question-category" class="form-label">Kategori</label>
-              <select id="question-category" class="form-select">
-                <option>Kategori Adı</option>
+              <select
+                class="form-select"
+                v-model="userData.categoryId"
+                id="question-category"
+              >
+                <option selected>Lütfen bir kategori seçiniz</option>
+                <option
+                  v-for="category in categoryList"
+                  :key="category.id"
+                  :value="category.id"
+                >
+                  {{ category.title }}
+                </option>
               </select>
             </div>
           </div>

@@ -5,10 +5,12 @@ import store from './store';
 import '@/assets/css/app.css';
 import appAxios from '@/axios/appAxios';
 import helperMixins from './mixins/helperMixins';
+import { quillEditor } from 'vue3-quill';
 
 const app = createApp(App);
 app.use(store);
 app.use(router);
+app.use(quillEditor);
 app.mount('#app');
 // global olarak zıng diye erişmek için
 

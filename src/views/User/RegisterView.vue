@@ -1,8 +1,8 @@
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "RegisterView",
   data: () => ({
-    categoryList: [],
     // Userın etkileşime girdiği data
     userData: {
       full_name: null,
@@ -12,12 +12,6 @@ export default {
     },
   }),
   methods: {
-    fetchCategories() {
-      this.$appAxios.get("/categories").then(({ data: categoryList }) => {
-        console.log(categoryList);
-        this.categoryList = categoryList || [];
-      });
-    },
     onSubmit() {
       // userdan gelen datayı parçalamak gerekli. 2 yol var 1) spread operator ile parçala. uzun iş 2) mixin kullan
 
@@ -33,9 +27,10 @@ export default {
       });
     },
   },
-
-  mounted() {
-    this.fetchCategories();
+  computed: {
+    ...mapGetters({
+      categoryList: "categories/categoryList",
+    }),
   },
 };
 </script>
