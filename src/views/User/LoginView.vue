@@ -3,8 +3,8 @@ export default {
   name: "LoginView",
   data: () => ({
     userData: {
-      email: "null213131231@ad.com",
-      password: "null2131312",
+      email: null,
+      password: null,
     },
   }),
   methods: {

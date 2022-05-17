@@ -1,9 +1,21 @@
 <script>
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "AppHeader",
   data: () => ({
     menuOpened: false,
   }),
+  methods: {
+    ...mapMutations({
+      logout: "users/logout",
+    }),
+  },
+  computed: {
+    ...mapGetters({
+      isAuthenticated: "users/isAuthenticated",
+      currentUser: "users/currentUser",
+    }),
+  },
 };
 </script>
 
@@ -48,12 +60,13 @@ export default {
         </div>
 
         <router-link
+          v-if="!isAuthenticated"
           :to="{ name: 'LoginView' }"
           class="btn btn-outline-primary me-0 mb-2"
           >Giriş Yap
         </router-link>
 
-        <ul class="navbar-nav me-0 mb-2 mb-lg-0">
+        <ul v-else class="navbar-nav me-0 mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a
               @click="menuOpened = !menuOpened"
@@ -62,8 +75,9 @@ export default {
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              >Depde Kandemir</a
             >
+              {{ currentUser.full_name }}
+            </a>
             <ul
               :class="{ show: menuOpened }"
               class="dropdown-menu"
@@ -94,7 +108,7 @@ export default {
                 </router-link>
               </li>
               <li>
-                <a class="dropdown-item" href="#">Çıkış Yap</a>
+                <a class="dropdown-item" @click="logout">Çıkış Yap</a>
               </li>
             </ul>
           </li>

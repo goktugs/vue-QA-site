@@ -10,6 +10,10 @@ export default {
     setUser(state, user) {
       state.user = user;
     },
+    logout(state) {
+      state.user = null;
+      router.push({ name: 'HomeView' });
+    },
   },
   actions: {
     login({ commit }, { email, password }) {
@@ -31,5 +35,8 @@ export default {
       });
     },
   },
-  getters: {},
+  getters: {
+    currentUser: (state) => state.user,
+    isAuthenticated: (state) => state.user !== null,
+  },
 };
