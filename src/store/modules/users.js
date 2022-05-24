@@ -20,7 +20,6 @@ export default {
       appAxios
         .get(`/users?email=${email}&password=${password}`)
         .then(({ status, data: userList }) => {
-          console.log(status, userList);
           if (status === 200 && userList?.length === 1) {
             commit('setUser', userList[0]);
             router.push({ name: 'HomeView' });
@@ -30,7 +29,6 @@ export default {
     register({ commit }, userData) {
       appAxios.post('/users', userData).then(({ data: user }) => {
         commit('setUser', user);
-
         router.push({ name: 'HomeView' });
       });
     },

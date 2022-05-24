@@ -1,23 +1,18 @@
 {
   "users": [
     {
-      "full_name": "12321",
-      "email": "2131@wqeqw.com",
-      "password": "2412",
+      "full_name": "admin admin",
+      "email": "admin@admin.com",
+      "password": "admin",
       "categoryId": 1,
       "id": 1
     },
     {
-      "email": "null213131231@ad.com",
-      "password": "null2131312",
+      "full_name": "goktug goktug",
+      "email": "goktug@goktug.com",
+      "password": "123123123",
+      "categoryId": 3,
       "id": 2
-    },
-    {
-      "full_name": "goktugsevg",
-      "email": "goktug@vmailfda.com",
-      "password": "asdasda",
-      "categoryId": 6,
-      "id": 3
     }
   ],
   "categories": [
@@ -34,7 +29,7 @@
       "id": 3
     },
     {
-      "title": "Python",
+      "title": ".Net",
       "id": 4
     },
     {
@@ -42,24 +37,32 @@
       "id": 5
     },
     {
-      "title": "Golang",
+      "title": "Angular",
       "id": 6
     },
     {
-      "title": "DevOPS",
+      "title": "Svelte",
       "id": 7
     },
     {
-      "title": "AWS",
+      "title": "Webpack",
       "id": 8
     },
     {
-      "title": "Vue.js",
+      "title": "GO",
       "id": 9
     },
     {
-      "title": "Angular",
+      "title": "Python",
       "id": 10
+    },
+    {
+      "title": "DevOPS",
+      "id": 11
+    },
+    {
+      "title": "AWS",
+      "id": 12
     }
   ],
   "questions": [],

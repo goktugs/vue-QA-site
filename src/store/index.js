@@ -1,6 +1,10 @@
 import { createStore } from 'vuex';
 import categories from '@/store/modules/categories';
 import users from '@/store/modules/users';
+import createPersistedState from 'vuex-persistedstate';
+// persisted dataları gizlemek için
+import SecureLS from 'secure-ls';
+const ls = new SecureLS({ isCompression: false });
 
 export default createStore({
   state: {},
@@ -15,4 +19,13 @@ export default createStore({
     categories,
     users,
   },
+  plugins: [
+    createPersistedState({
+      storage: {
+        getItem: (key) => ls.get(key),
+        setItem: (key, value) => ls.set(key, value),
+        removeItem: (key) => ls.remove(key),
+      },
+    }),
+  ],
 });
