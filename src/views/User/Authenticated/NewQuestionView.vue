@@ -12,11 +12,11 @@ export default {
     onSubmit() {
       const userData = this.copy(this.userData);
       userData.userId = this.currentUser.id;
-      this.$appAxios
-        .post("/questions", userData)
-        .then((new_question_response) => {
-          console.log(new_question_response);
-        });
+      this.$appAxios.post("/questions", userData).then(({ status }) => {
+        if (status === 201) {
+          this.$router.push({ name: "HomeView" });
+        }
+      });
     },
   },
   computed: {
