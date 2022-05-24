@@ -3,8 +3,8 @@ export default {
   name: "LoginView",
   data: () => ({
     userData: {
-      email: null,
-      password: null,
+      email: "goktug@goktug.com",
+      password: "123123123",
     },
   }),
   methods: {
@@ -31,7 +31,7 @@ export default {
                   v-model="userData.email"
                   type="email"
                   class="form-control"
-                  placeholder="info@kablosuzkedi.com"
+                  placeholder=""
                 />
               </div>
               <div class="mb-3">
