@@ -4,6 +4,7 @@ export default {
   computed: {
     ...mapGetters({
       categoryList: "categories/categoryList",
+      isAuthenticated: "users/isAuthenticated",
     }),
   },
 };
