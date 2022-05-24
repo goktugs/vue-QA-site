@@ -72,7 +72,24 @@
       "id": 12
     }
   ],
-  "questions": [],
+  "questions": [
+    {
+      "details": null,
+      "title": "asdsa",
+      "categoryId": 4,
+      "content": "<p>asdsada</p>",
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "details": null,
+      "title": "deneme2",
+      "categoryId": 7,
+      "content": "<p>asdsadsa<em>asdsadsaasdsasda     asdasdsa</em><strong><em>asdsadsadasda</em></strong></p>",
+      "userId": 2,
+      "id": 2
+    }
+  ],
   "comments": [],
   "favorites": [],
   "likes": []

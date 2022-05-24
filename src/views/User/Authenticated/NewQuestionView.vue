@@ -11,12 +11,18 @@ export default {
   methods: {
     onSubmit() {
       const userData = this.copy(this.userData);
-      console.log(userData);
+      userData.userId = this.currentUser.id;
+      this.$appAxios
+        .post("/questions", userData)
+        .then((new_question_response) => {
+          console.log(new_question_response);
+        });
     },
   },
   computed: {
     ...mapGetters({
       categoryList: "categories/categoryList",
+      currentUser: "users/currentUser",
     }),
   },
 };
@@ -40,7 +46,7 @@ export default {
                 type="text"
                 class="form-control"
                 id="question-title"
-                placeholder="Bu soru çokomelli"
+                placeholder="Başlık"
               />
             </div>
             <div class="mb-3">
