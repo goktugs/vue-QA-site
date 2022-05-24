@@ -87,12 +87,16 @@ router.beforeEach((to, _, next) => {
   if (authRequired) {
     if (isAuthenticated) return next();
     return next({ name: 'LoginView' });
-  } else if (isAuthenticated) {
+  }
+
+  if (isAuthenticated) {
     // Hali hazırda authenticated ise
     if (['LoginView', 'RegisterView'].includes(to.name)) {
-      next(false);
+      return next({ name: 'HomeView' });
     }
-  } else if (!authRequired) next(); // Gidilmek istenen sayfa auth gerekmiyorsa ozmn başka birşeye bakma devam et
+  }
+
+  if (!authRequired) next(); // Gidilmek istenen sayfa auth gerekmiyorsa ozmn başka birşeye bakma devam et
 });
 
 export default router;

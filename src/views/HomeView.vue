@@ -56,9 +56,9 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="custom-text-light">
                   <i class="fa fa-user-circle me-1"></i>
-                  Gökhan Kandemir 15:00'de sordu
+                  Admin Admin 15:00'de sordu
                 </div>
-                <div class="custom-text-light">KAtegori Adı</div>
+                <div class="custom-text-light">Kategori Adı</div>
               </div>
             </div>
           </div>

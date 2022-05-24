@@ -1,18 +1,25 @@
 {
   "users": [
     {
-      "full_name": "admin admin",
+      "full_name": "admin ",
       "email": "admin@admin.com",
       "password": "admin",
       "categoryId": 1,
       "id": 1
     },
     {
-      "full_name": "goktug goktug",
+      "full_name": "goktug sevgil",
       "email": "goktug@goktug.com",
       "password": "123123123",
       "categoryId": 3,
       "id": 2
+    },
+    {
+      "full_name": "goktuggoktug",
+      "email": "goktug@goktuggoktug.com",
+      "password": "goko36",
+      "categoryId": 11,
+      "id": 3
     }
   ],
   "categories": [
