@@ -10,6 +10,7 @@
 import AppLoading from "@/components/AppShared/AppLoading.vue"
 
 export default {
+    components: {AppLoading},
   mounted() {
     this.$store.dispatch("initApp");
   },
