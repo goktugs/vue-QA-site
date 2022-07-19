@@ -11,9 +11,15 @@ export default {
     },
   },
   actions: {
-    fetchList({ commit }) {
+    fetchList({ commit, rootGetters }) {
       appAxios.get('/categories').then(({ data: categoryList }) => {
-        commit('setList', categoryList || []);
+        const currentUser = rootGetters['users/currentUser'];
+        const userCategoryID = currentUser?.categoryId;
+        const updatedList = categoryList?.map((c) => ({
+          ...c,
+          selected: userCategoryID === c.id,
+        }));
+        commit('setList', updatedList || []);
       });
     },
   },
