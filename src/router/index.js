@@ -6,7 +6,7 @@ const routes = [
   {
     path: '/',
     name: 'HomeView',
-    // component: () => import('@/views/HomeView'),
+    // component: () => import("@/views/HomeView")
     components: {
       default: () => import('@/views/HomeView'),
       AppHeader,
@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/question/:id',
     name: 'QuestionDetailView',
-    // component: () => import('@/views/QuestionDetailView'),
+    // component: () => import("@/views/QuestionDetailView")
     components: {
       default: () => import('@/views/QuestionDetailView'),
       AppHeader,
@@ -25,7 +25,7 @@ const routes = [
     path: '/favorites',
     name: 'MyFavoritesView',
     meta: { authRequired: true },
-    // component: () => import('@/views/User/Authenticated/FavoritesView'),
+    // component: () => import("@/views/User/Authenticated/FavoritesView"),
     components: {
       default: () => import('@/views/User/Authenticated/MyFavoritesView'),
       AppHeader,
@@ -35,17 +35,17 @@ const routes = [
     path: '/my-account',
     name: 'MyAccountView',
     meta: { authRequired: true },
-    // component: () => import('@/views/User/Authenticated/MyAccountView'),
+    // component: () => import("@/views/User/Authenticated/MyAccountView"),
     components: {
       default: () => import('@/views/User/Authenticated/MyAccountView'),
       AppHeader,
     },
   },
   {
-    path: '/my-question',
+    path: '/my-questions',
     name: 'MyQuestionsView',
     meta: { authRequired: true },
-    // component: () => import('@/views/User/Authenticated/MyQuestionsView'),
+    // component: () => import("@/views/User/Authenticated/MyQuestionsView"),
     components: {
       default: () => import('@/views/User/Authenticated/MyQuestionsView'),
       AppHeader,
@@ -55,13 +55,13 @@ const routes = [
     path: '/new-question',
     name: 'NewQuestionView',
     meta: { authRequired: true },
-    // component: () => import('@/views/User/Authenticated/NewQuestionView'),
+    // component: () => import("@/views/User/Authenticated/NewQuestionView"),
     components: {
       default: () => import('@/views/User/Authenticated/NewQuestionView'),
       AppHeader,
     },
   },
-  // No header
+  // No Header
   {
     path: '/login',
     name: 'LoginView',
@@ -82,7 +82,6 @@ const router = createRouter({
 router.beforeEach((to, _, next) => {
   const isAuthenticated = store.getters['users/isAuthenticated'];
   const authRequired = to.meta?.authRequired;
-
   // Gidilmek istenen sayfa auth ve giriş ise devam
   if (authRequired) {
     if (isAuthenticated) return next();
@@ -95,7 +94,6 @@ router.beforeEach((to, _, next) => {
       return next({ name: 'HomeView' });
     }
   }
-
   if (!authRequired) next(); // Gidilmek istenen sayfa auth gerekmiyorsa ozmn başka birşeye bakma devam et
 });
 

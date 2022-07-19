@@ -35,7 +35,7 @@ export default {
 
 
 <template>
-  <div class="container loginPage">
+   <div class="container loginPage">
     <div class="row">
       <div class="col-4 offset-4">
         <div class="card">
@@ -43,56 +43,33 @@ export default {
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">Ad Soyad</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="İsim Giriniz"
-                v-model="userData.full_name"
-              />
+              <input v-model="userData.full_name" type="text" class="form-control" placeholder="İsim Giriniz"/>
             </div>
             <div class="mb-3">
               <label class="form-label">E-posta adresi</label>
-              <input
-                type="email"
-                class="form-control"
-                placeholder="info@gmail.com"
-                v-model="userData.email"
-              />
+              <input v-model="userData.email" type="email" class="form-control" placeholder="info@gmail.com"/>
             </div>
             <div class="mb-3">
               <label class="form-label">Şifre</label>
-              <input
-                type="password"
-                class="form-control"
-                v-model="userData.password"
-              />
+              <input v-model="userData.password" type="password" class="form-control"/>
             </div>
             <div class="mb-3">
               <label class="form-label">İlgi Duyduğunuz Kategori</label>
-              <select class="form-select" v-model="userData.categoryId">
+              <select v-model="userData.categoryId" class="form-select">
                 <option selected>Lütfen bir kategori seçiniz</option>
-                <option
-                  v-for="category in categoryList"
-                  :key="category.id"
-                  :value="category.id"
-                >
-                  {{ category.title }}
+                <option v-for="category in categoryList" :value="category.id" :key="category.id">{{
+                    category.title
+                  }}
                 </option>
               </select>
             </div>
 
             <div class="mb-3 d-flex justify-content-end align-items-center">
-              <button @click="onSubmit" class="btn btn-sm btn-primary">
-                Kayıt Ol
-              </button>
+              <button @click="onSubmit" class="btn btn-sm btn-primary">Kayıt Ol</button>
             </div>
           </div>
           <div class="card-footer text-center">
-            <router-link
-              :to="{ name: 'LoginView' }"
-              class="p-0 m-0 btn btn-link text-primary"
-              >Zaten Üyeyim
-            </router-link>
+            <router-link :to="{name : 'LoginView'}" class="p-0 m-0 btn btn-link text-primary">Zaten üyeyim</router-link>
           </div>
         </div>
       </div>

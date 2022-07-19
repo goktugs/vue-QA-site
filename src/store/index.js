@@ -1,15 +1,24 @@
 import { createStore } from 'vuex';
 import categories from '@/store/modules/categories';
 import users from '@/store/modules/users';
+import questions from '@/store/modules/questions';
 import createPersistedState from 'vuex-persistedstate';
 // persisted dataları gizlemek için
 import SecureLS from 'secure-ls';
 const ls = new SecureLS({ isCompression: false });
 
 export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
+  state: {
+    loadingState: false,
+  },
+  getters: {
+    loadingState: (state) => state.loadingState,
+  },
+  mutations: {
+    setLoading(state, status) {
+      state.loadingState = status;
+    },
+  },
   actions: {
     initApp({ dispatch }) {
       dispatch('categories/fetchList');
@@ -18,9 +27,12 @@ export default createStore({
   modules: {
     categories,
     users,
+    questions,
   },
   plugins: [
     createPersistedState({
+      paths: ['users.user', 'questions.list'],
+      key: 'qa-app',
       storage: {
         getItem: (key) => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
