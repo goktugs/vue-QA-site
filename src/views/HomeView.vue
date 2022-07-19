@@ -1,19 +1,31 @@
 <script>
-import CategoryList from "@/components/HomeView/CategoryList.vue";
+import CategoryList from "@/components/HomeView/CategoryList"
 import AppQuestionList from "@/components/AppShared/AppQuestionList";
+import {mapGetters} from "vuex";
+
 export default {
   components: {
-    CategoryList,
     AppQuestionList,
+    CategoryList
   },
-};
+  mounted() {
+   this.$store.dispatch("questions/fetchList");
+  },
+  computed: {
+    ...mapGetters({
+      currentUser: "users/currentUser",
+      questionList : "questions/questionList"
+    })
+  }
+}
 </script>
-
 <template>
   <div class="container-fluid">
     <div class="row mt-3">
-      <category-list />
-      <app-question-list />
+      <CategoryList />
+      <div class="col-10">
+        <AppQuestionList :list="questionList"/>
+      </div>
     </div>
   </div>
 </template>
